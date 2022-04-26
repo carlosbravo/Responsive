@@ -13,7 +13,16 @@
 
     <body>
         <p>Este es el párrafo</p>
-        <span>Este es el span</span>
+        <span>Este es el span</span><br/>
+        <label>Ingrese los dos números a sumar:</label><br>
+        
+        <input id="num1"><br>
+        <input id="num2"><br>
+
+        <button id="btnCalcularSuma" onclick="sumar()">Función Sumar sin Param</button>
+        <button id="btnCalcularSuma" onclick="sumar(num1,num2)">Función Sumar con Param</button>
+
+        <p id="resultado"></p>
     </body>
 
     <script>
@@ -23,11 +32,50 @@
             $("p").css({
                     'border': '2px solid red',
                     'padding': '20px',
-                    'width': '15px'
+                    //'width': '15px'
                     })
             .add("span").css("background","green");
 
+
         });
+
+        function sumar(x, y)
+        {
+            if(isNaN(x) || isNaN(y))
+            {
+                text = "Debe ingresar números";
+            }
+            else
+            {
+                 //en este caso no hace falta poner el parseFloat
+                 suma = x + y;
+                 text = suma; 
+            }
+
+            document.getElementById("resultado").innerHTML = text;
+        }
+
+        //Función sin parámetros que busca el valor de los input
+        function sumar()
+        {
+            var x, y, suma, text;
+
+            x = document.getElementById("num1").value;
+            y = document.getElementById("num2").value;
+
+            if(isNaN(x) || isNaN(y))
+            {
+                text = "Debe ingresar números";
+            }
+            else
+            {
+                 //si no ponemos parseFloat concatenaría x con y
+                 suma = parseFloat(x) + parseFloat(y);
+                 text = suma; 
+            }
+
+            document.getElementById("resultado").innerHTML = text;
+        }
                 
     </script>     
  
